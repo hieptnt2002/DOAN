@@ -1,7 +1,7 @@
 <?php
 require_once 'functions.php';
 $male_products = getMaleProducts($conn);
-$banner = getBanner($conn, 1); // 1 là category_id cho nước hoa nam
+$banner = getBanner($conn, 1); 
 ?>
 
 <section class="male">

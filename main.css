@@ -640,3 +640,60 @@ footer {
         height: 300px;
     }
 }
+
+.products-female {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+/* Responsive cho products-female */
+@media (max-width: 768px) {
+    .products-female {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-female {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Style cho banner nữ */
+.female-banner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.female-banner h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.female-banner img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: -100px;
+}
+
+/* Responsive cho banner nữ */
+@media (max-width: 768px) {
+    .female-banner img {
+        height: 300px;
+    }
+}
