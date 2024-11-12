@@ -89,5 +89,3 @@ Email: longanhminh9@gmail.com
 © 2024 HuuLongMedia. Mọi quyền được bảo lưu.
 
 Tất cả nội dung và mã nguồn trong dự án này là tài sản sở hữu trí tuệ của HuuLongMedia. Việc sử dụng, sao chép, phân phối hoặc sửa đổi bất kỳ phần nào của dự án đều phải được sự cho phép bằng văn bản từ HuuLongMedia. Vui lòng liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào liên quan đến việc sử dụng nội dung và mã nguồn của dự án này.
-
-Bạn có thể tham khảo và sử dụng README.md này cho dự án của mình. Nếu cần bất kỳ sửa đổi hoặc hỗ trợ gì thêm, hãy cho tôi biết.
