@@ -65,4 +65,37 @@ function getBanner($conn, $category_id) {
     $stmt->execute([$category_id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function registerUser($conn, $username, $email, $password, $fullname = null, $phone = null, $address = null) {
+    try {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password, fullname, phone, address, role) 
+                               VALUES (:username, :email, :password, :fullname, :phone, :address, 'user')");
+        
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':fullname', $fullname);
+        $stmt->bindParam(':phone', $phone);
+        $stmt->bindParam(':address', $address);
+        
+        return $stmt->execute();
+    } catch(PDOException $e) {
+        return false;
+    }
+}
+
+function loginUser($conn, $email, $password) {
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        return true;
+    }
+    return false;
+}
 ?> 

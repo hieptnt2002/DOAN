@@ -3,7 +3,7 @@
         <div class="footer-main">
             <div class="footer-info">
                 <h3>Về chúng tôi</h3>
-                <p>Chuyên cung cấp các sản phẩm thời trang chất lượng cao</p>
+                <p>Chuyên cung cấp các sản phẩm nước hoa chất lượng cao</p>
             </div>
             <div class="footer-contact">
                 <h3>Liên hệ</h3>

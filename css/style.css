@@ -1,0 +1,145 @@
+
+.form-container {
+    min-height: calc(100vh - 80px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 20px; 
+    background: linear-gradient(120deg, #3498db, #8e44ad);
+}
+
+.form-container form {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    width: 400px;
+    transition: all 0.3s ease;
+}
+
+.form-container form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.form-container form h3 {
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    letter-spacing: 1px;
+}
+
+.form-container form input,
+.form-container form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    margin: 10px 0;
+    background: #f7f9fc;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.form-container form input:focus,
+.form-container form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    outline: none;
+}
+
+.form-container form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-container form .btn {
+    background: #3498db;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.form-container form .btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+}
+
+.form-container form p {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #666;
+}
+
+.form-container form p a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.form-container form p a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.form-container form .error-msg {
+    margin: 15px 0;
+    display: block;
+    background: #ff6b6b;
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 15px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.form-container form .success-msg {
+    margin: 15px 0;
+    display: block;
+    background: #51cf66;
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 15px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+
+@media (max-width: 480px) {
+    .form-container form {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .form-container form h3 {
+        font-size: 24px;
+    }
+    
+    .form-container form input,
+    .form-container form textarea {
+        font-size: 14px;
+    }
+    
+    .form-container form .btn {
+        width: 100%;
+        font-size: 14px;
+    }
+} 
