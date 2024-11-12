@@ -1,7 +1,12 @@
 <?php
 require_once 'functions.php';
-$male_products = getMaleProducts($conn);
-$banner = getBanner($conn, 1); 
+
+$current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$products_per_page = 8;
+
+$male_products = getMaleProducts($conn, $current_page, $products_per_page);
+$total_products = getTotalMaleProducts($conn);
+$banner = getBanner($conn, 1);
 ?>
 
 <section class="male">
