@@ -98,4 +98,38 @@ function loginUser($conn, $email, $password) {
     }
     return false;
 }
+
+function getKnowledgeArticles($conn, $page = 1, $per_page = 6) {
+    $offset = ($page - 1) * $per_page;
+    
+    $stmt = $conn->prepare("SELECT * FROM articles 
+            WHERE status = 'published' 
+            ORDER BY created_at DESC 
+            LIMIT :limit OFFSET :offset");
+            
+    $stmt->bindValue(':limit', $per_page, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// function getTotalArticles($conn) {
+//     $stmt = $conn->prepare("SELECT COUNT(*) as total FROM articles WHERE status = 'published'");
+//     $stmt->execute();
+//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+//     return $result['total'];
+// }
+
+// function getFeaturedProducts($conn, $limit = 3) {
+//     $stmt = $conn->prepare("SELECT * FROM products 
+//             WHERE featured = 1 
+//             ORDER BY RAND() 
+//             LIMIT :limit");
+            
+//     $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+//     $stmt->execute();
+    
+//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+// }
 ?> 
