@@ -24,7 +24,6 @@ function getMaleProducts($conn, $page = 1, $products_per_page = 8)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
 function getFemaleProducts($conn, $page = 1, $products_per_page = 8)
 {
     $offset = ($page - 1) * $products_per_page;
@@ -42,7 +41,6 @@ function getFemaleProducts($conn, $page = 1, $products_per_page = 8)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
 function getTotalMaleProducts($conn)
 {
     $stmt = $conn->prepare("SELECT COUNT(*) as total FROM products WHERE category_id = 1");
@@ -51,7 +49,6 @@ function getTotalMaleProducts($conn)
     return $result['total'];
 }
 
-
 function getTotalFemaleProducts($conn)
 {
     $stmt = $conn->prepare("SELECT COUNT(*) as total FROM products WHERE category_id = 2");
@@ -59,7 +56,6 @@ function getTotalFemaleProducts($conn)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
 }
-
 
 function formatPrice($price)
 {
@@ -103,28 +99,16 @@ function registerUser($conn, $username, $email, $password, $fullname = null, $ph
 function loginUser($conn, $email, $password)
 {
     try {
-        error_log("Login attempt - Email: " . $email);
-        
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([trim($email)]);
         $user = $stmt->fetch();
-
-        error_log("User found: " . print_r($user, true));
         
-        if ($user) {
-            error_log("Password verify result: " . (password_verify($password, $user['password']) ? 'true' : 'false'));
-            
-            if (password_verify($password, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['role'] = $user['role'];
-                
-                error_log("Login successful - User ID: " . $user['id'] . ", Role: " . $user['role']);
-                return true;
-            }
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+            return true;
         }
-        
-        error_log("Login failed for email: " . $email);
         return false;
     } catch (PDOException $e) {
         error_log("Login error: " . $e->getMessage());
@@ -148,25 +132,6 @@ function getKnowledgeArticles($conn, $page = 1, $per_page = 6)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// function getTotalArticles($conn) {
-//     $stmt = $conn->prepare("SELECT COUNT(*) as total FROM articles WHERE status = 'published'");
-//     $stmt->execute();
-//     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-//     return $result['total'];
-// }
-
-// function getFeaturedProducts($conn, $limit = 3) {
-//     $stmt = $conn->prepare("SELECT * FROM products 
-//             WHERE featured = 1 
-//             ORDER BY RAND() 
-//             LIMIT :limit");
-
-//     $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-//     $stmt->execute();
-
-//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-// }
-
 function getOrders($conn) {
     if (!isset($_SESSION['user_id'])) {
         return [];
@@ -180,6 +145,7 @@ function getOrders($conn) {
             od.quantity,
             od.price,
             p.name as product_name,
+            p.stock as product_stock,
             (od.price * od.quantity) as subtotal
         FROM orders o
         JOIN order_details od ON o.id = od.order_id
@@ -203,22 +169,60 @@ function getTotalOrders($orders) {
 function updateQuantityOrder($conn)
 {
     if (isset($_POST['action']) && $_POST['action'] == 'update_quantity' && isset($_POST['order_id']) && isset($_POST['quantity'])) {
-        $orderId = intval($_POST['order_id']);
-        $quantity = max(1, intval($_POST['quantity']));
+        try {
+            $orderDetailId = intval($_POST['order_id']);
+            $quantity = max(1, intval($_POST['quantity']));
+            $userId = $_SESSION['user_id'];
 
-        $sql = "UPDATE order_details SET quantity = :quantity WHERE order_id = :order_id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(":quantity", $quantity);
-        $stmt->bindParam(":order_id", $orderId);
-        $stmt->execute();
+            // Kiểm tra order detail và stock
+            $stmt = $conn->prepare("
+                SELECT od.id, p.stock 
+                FROM order_details od
+                JOIN orders o ON od.order_id = o.id
+                JOIN products p ON od.product_id = p.id
+                WHERE od.id = ? AND o.user_id = ? AND o.status = 'pending'
+            ");
+            $stmt->execute([$orderDetailId, $userId]);
+            $result = $stmt->fetch();
+            
+            if ($result) {
+                // Kiểm tra số lượng tồn kho
+                if ($quantity > $result['stock']) {
+                    echo json_encode([
+                        'success' => false,
+                        'message' => 'Số lượng vượt quá hàng tồn kho'
+                    ]);
+                    exit;
+                }
 
-        $orders = getOrders($conn);
-        $totalPrice = getTotalOrders($orders);
+                // Cập nhật số lượng
+                $stmt = $conn->prepare("UPDATE order_details SET quantity = :quantity WHERE id = :id");
+                $stmt->bindParam(":quantity", $quantity);
+                $stmt->bindParam(":id", $orderDetailId);
+                $stmt->execute();
 
-        echo json_encode([
-            'totalPrice' => formatPrice($totalPrice),
-            'orders' => $orders
-        ]);
+                // Lấy danh sách orders mới và tính tổng
+                $orders = getOrders($conn);
+                $totalPrice = getTotalOrders($orders);
+
+                echo json_encode([
+                    'success' => true,
+                    'totalPrice' => formatPrice($totalPrice),
+                    'orders' => $orders
+                ]);
+            } else {
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Không tìm thấy sản phẩm trong giỏ hàng'
+                ]);
+            }
+        } catch (PDOException $e) {
+            error_log("Update quantity error: " . $e->getMessage());
+            echo json_encode([
+                'success' => false,
+                'message' => 'Có lỗi xảy ra khi cập nhật số lượng'
+            ]);
+        }
         exit;
     }
 }
