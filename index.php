@@ -1,5 +1,7 @@
 <?php
 require_once 'config/db.php';
+require_once 'includes/functions.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +15,7 @@ require_once 'config/db.php';
     
    
     <link rel="stylesheet" href="main.css?v=1.0">
+    <link rel="stylesheet" href="./css/style.css?v=1.0">
     
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -45,5 +48,7 @@ require_once 'config/db.php';
 
    
     <?php include 'includes/footer.php'; ?>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

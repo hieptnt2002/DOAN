@@ -8,7 +8,7 @@
     outline: none;
     border: none;
     text-decoration: none;
-    text-transform: capitalize;
+    text-transform: none;
     transition: all 0.2s linear;
 }
 
@@ -1682,4 +1682,19 @@ form {
     .stats-section {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* Ghi đè lên rule * { text-transform: capitalize } */
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+textarea {
+    text-transform: none !important;
+}
+
+/* Đảm bảo placeholder không bị in hoa */
+input::placeholder,
+textarea::placeholder {
+    text-transform: none !important;
 }

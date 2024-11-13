@@ -1,4 +1,12 @@
 <?php
+// Bật hiển thị lỗi
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Định nghĩa file log
+ini_set('log_errors', 1);
+ini_set('error_log', 'C:/xampp/htdocs/DoAn/logs/login_debug.log');
+
 session_start();
 require_once 'config/db.php';
 require_once 'includes/functions.php';
@@ -7,6 +15,7 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    error_log("Login attempt - POST data: " . print_r($_POST, true));
     if (isset($_POST['login'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];

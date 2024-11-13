@@ -14,7 +14,7 @@ $products = getAllProducts($conn);
                 <small><?php echo formatPrice($product['sale_price']); ?></small>
             <?php endif; ?>
             <a href="" class="watch">Xem Trước</a>
-            <a href="" class="buy">Mua Ngay</a>
+            <a href="#" class="buy add-to-cart" data-product-id="<?php echo $product['id']; ?>">Mua Ngay</a>
         </div>
         <?php endforeach; ?>
     </div>

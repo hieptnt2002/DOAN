@@ -24,7 +24,9 @@ $banner = getBanner($conn, 2);
             <?php if($product['sale_price']): ?>
                 <small><?php echo formatPrice($product['sale_price']); ?></small>
             <?php endif; ?>
-            <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#" class="add-to-cart" data-product-id="<?php echo $product['id']; ?>">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
             <a href=""><i class="fa-regular fa-heart"></i></a>
             <a href=""><i class="fa-regular fa-eye"></i></a>
         </div>

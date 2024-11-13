@@ -1,3 +1,18 @@
+<?php
+require_once 'config/db.php';
+require_once 'includes/functions.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Fix đường dẫn tương đối
+$root_path = $_SERVER['DOCUMENT_ROOT'] . '/DoAn/';
+if (!file_exists($root_path . 'config/db.php')) {
+    require_once '../config/db.php';
+} else {
+    require_once 'config/db.php';
+}
+?>
 <header class="header">
     <a href="index.php" class="logo">
         <img src="./image/Hồng ân.png" alt="">
@@ -22,12 +37,38 @@
                 <div class="search-results"></div>
             </div>
         </div>
-        <a href="login.php"><i class="fa fa-user"></i></a>
-        <a href="wishlist.php"><i class="fa fa-star"></i></a>
-        <a href="cart.php"><i class="fa fa-cart-shopping"></i></a>
+        <div class="user-icon">
+            <i class="fa fa-user" id="user-btn"></i>
+            <div class="user-dropdown">
+                <?php if (isLoggedIn()): ?>
+                    <?php $user = getCurrentUser($conn); ?>
+                    <div class="user-info">
+                        <p>Xin chào, <?php echo htmlspecialchars($user['username']); ?></p>
+                    </div>
+                    <hr>
+                    <a href="account.php"><i class="fa fa-user-circle"></i> Tài khoản</a>
+                    <a href="orders.php"><i class="fa fa-shopping-bag"></i> Đơn hàng</a>
+                    <?php if ($user['role'] === 'admin'): ?>
+                        <a href="admin/dashboard.php"><i class="fa fa-gauge"></i> Quản trị</a>
+                        <a href="admin/products.php"><i class="fa fa-box"></i> Quản lý sản phẩm</a>
+                        <a href="admin/orders.php"><i class="fa fa-list"></i> Quản lý đơn hàng</a>
+                        <a href="admin/users.php"><i class="fa fa-users"></i> Quản lý người dùng</a>
+                    <?php endif; ?>
+                    <hr>
+                    <a href="logout.php"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                <?php else: ?>
+                    <a href="login.php"><i class="fa fa-sign-in"></i> Đăng nhập</a>
+                    <a href="register.php"><i class="fa fa-user-plus"></i> Đăng ký</a>
+                <?php endif; ?>
+            </div>
+        </div>
+        <a href="wishlist.php"><i class="fa fa-heart"></i></a>
+        <a href="cart.php" class="cart-icon">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="cart-count"><?php echo getCartCount($conn); ?></span>
+        </a>
     </div>
 </header>
-
 <script>
 $(document).ready(function() {
 
@@ -71,3 +112,4 @@ $(document).ready(function() {
     });
 });
 </script> 
+

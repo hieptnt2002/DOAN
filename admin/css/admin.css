@@ -1,0 +1,33 @@
+/* Status Badges cho sản phẩm */
+.status-badge.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-badge.out_of_stock {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Style cho product thumb */
+.product-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Style cho action buttons */
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.actions .btn {
+    padding: 4px 8px;
+} 

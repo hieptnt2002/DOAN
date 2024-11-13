@@ -1,0 +1,298 @@
+[12-Nov-2024 18:53:42 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => admin@gmail.com
+    [password] => 123
+    [login] => Đăng nhập
+)
+
+[12-Nov-2024 18:53:42 Europe/Berlin] Login attempt - Email: admin@gmail.com
+[12-Nov-2024 18:53:42 Europe/Berlin] User found: Array
+(
+    [id] => 4
+    [0] => 4
+    [username] => admin
+    [1] => admin
+    [password] => $2y$10$Yl5.rqrJDtHGykxLPqwQeOJ9YqsX6qnuZEjGvtKyoDEuVhYqXtPuC
+    [2] => $2y$10$Yl5.rqrJDtHGykxLPqwQeOJ9YqsX6qnuZEjGvtKyoDEuVhYqXtPuC
+    [email] => admin@gmail.com
+    [3] => admin@gmail.com
+    [fullname] => 
+    [4] => 
+    [phone] => 
+    [5] => 
+    [address] => 
+    [6] => 
+    [role] => admin
+    [7] => admin
+    [created_at] => 2024-11-13 00:51:04
+    [8] => 2024-11-13 00:51:04
+)
+
+[12-Nov-2024 18:53:42 Europe/Berlin] Password verify result: false
+[12-Nov-2024 18:53:43 Europe/Berlin] Login failed for email: admin@gmail.com
+[12-Nov-2024 18:53:47 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => hiep@gmail.com
+    [password] => admin123
+    [login] => Đăng nhập
+)
+
+[12-Nov-2024 18:53:47 Europe/Berlin] Login attempt - Email: hiep@gmail.com
+[12-Nov-2024 18:53:47 Europe/Berlin] User found: Array
+(
+    [id] => 1
+    [0] => 1
+    [username] => demo
+    [1] => demo
+    [password] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [2] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [email] => hiep@gmail.com
+    [3] => hiep@gmail.com
+    [fullname] => Hiep Tran
+    [4] => Hiep Tran
+    [phone] => 0123456789
+    [5] => 0123456789
+    [address] => HueCity
+    [6] => HueCity
+    [role] => user
+    [7] => user
+    [created_at] => 2024-11-12 12:47:20
+    [8] => 2024-11-12 12:47:20
+)
+
+[12-Nov-2024 18:53:48 Europe/Berlin] Password verify result: true
+[12-Nov-2024 18:53:48 Europe/Berlin] Login successful - User ID: 1, Role: user
+[12-Nov-2024 18:54:03 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => admin@gmail.com
+    [password] => 123
+    [login] => Đăng nhập
+)
+
+[12-Nov-2024 18:54:03 Europe/Berlin] Login attempt - Email: admin@gmail.com
+[12-Nov-2024 18:54:03 Europe/Berlin] User found: Array
+(
+    [id] => 4
+    [0] => 4
+    [username] => admin
+    [1] => admin
+    [password] => $2y$10$Yl5.rqrJDtHGykxLPqwQeOJ9YqsX6qnuZEjGvtKyoDEuVhYqXtPuC
+    [2] => $2y$10$Yl5.rqrJDtHGykxLPqwQeOJ9YqsX6qnuZEjGvtKyoDEuVhYqXtPuC
+    [email] => admin@gmail.com
+    [3] => admin@gmail.com
+    [fullname] => 
+    [4] => 
+    [phone] => 
+    [5] => 
+    [address] => 
+    [6] => 
+    [role] => admin
+    [7] => admin
+    [created_at] => 2024-11-13 00:51:04
+    [8] => 2024-11-13 00:51:04
+)
+
+[12-Nov-2024 18:54:03 Europe/Berlin] Password verify result: false
+[12-Nov-2024 18:54:03 Europe/Berlin] Login failed for email: admin@gmail.com
+[12-Nov-2024 18:59:07 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => admin@gmail.com
+    [password] => 123
+    [login] => Đăng nhập
+)
+
+[12-Nov-2024 18:59:07 Europe/Berlin] Login attempt - Email: admin@gmail.com
+[12-Nov-2024 18:59:07 Europe/Berlin] User found: Array
+(
+    [id] => 5
+    [0] => 5
+    [username] => admin
+    [1] => admin
+    [password] => $2y$10$HLqIGWGvHWg8YuNVLodi7e963GVYCtJDxzX2cmwnnyB8mhyspwHt6
+    [2] => $2y$10$HLqIGWGvHWg8YuNVLodi7e963GVYCtJDxzX2cmwnnyB8mhyspwHt6
+    [email] => admin@gmail.com
+    [3] => admin@gmail.com
+    [fullname] => 
+    [4] => 
+    [phone] => 
+    [5] => 
+    [address] => 
+    [6] => 
+    [role] => admin
+    [7] => admin
+    [created_at] => 2024-11-13 00:58:35
+    [8] => 2024-11-13 00:58:35
+)
+
+[12-Nov-2024 18:59:07 Europe/Berlin] Password verify result: true
+[12-Nov-2024 18:59:07 Europe/Berlin] Login successful - User ID: 5, Role: admin
+[13-Nov-2024 05:15:02 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => hiep@gmail.com
+    [password] => admin123
+    [login] => Đăng nhập
+)
+
+[13-Nov-2024 05:15:02 Europe/Berlin] Login attempt - Email: hiep@gmail.com
+[13-Nov-2024 05:15:02 Europe/Berlin] User found: Array
+(
+    [id] => 1
+    [0] => 1
+    [username] => demo
+    [1] => demo
+    [password] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [2] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [email] => hiep@gmail.com
+    [3] => hiep@gmail.com
+    [fullname] => Hiep Tran
+    [4] => Hiep Tran
+    [phone] => 0123456789
+    [5] => 0123456789
+    [address] => HueCity
+    [6] => HueCity
+    [role] => user
+    [7] => user
+    [created_at] => 2024-11-12 12:47:20
+    [8] => 2024-11-12 12:47:20
+)
+
+[13-Nov-2024 05:15:02 Europe/Berlin] Password verify result: true
+[13-Nov-2024 05:15:02 Europe/Berlin] Login successful - User ID: 1, Role: user
+[13-Nov-2024 05:27:44 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => admin@gmai.com
+    [password] => 123
+    [login] => Đăng nhập
+)
+
+[13-Nov-2024 05:27:44 Europe/Berlin] Login attempt - Email: admin@gmai.com
+[13-Nov-2024 05:27:44 Europe/Berlin] User found: 
+[13-Nov-2024 05:27:44 Europe/Berlin] Login failed for email: admin@gmai.com
+[13-Nov-2024 05:27:53 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => admin@gmail.com
+    [password] => 123
+    [login] => Đăng nhập
+)
+
+[13-Nov-2024 05:27:53 Europe/Berlin] Login attempt - Email: admin@gmail.com
+[13-Nov-2024 05:27:53 Europe/Berlin] User found: Array
+(
+    [id] => 5
+    [0] => 5
+    [username] => admin
+    [1] => admin
+    [password] => $2y$10$HLqIGWGvHWg8YuNVLodi7e963GVYCtJDxzX2cmwnnyB8mhyspwHt6
+    [2] => $2y$10$HLqIGWGvHWg8YuNVLodi7e963GVYCtJDxzX2cmwnnyB8mhyspwHt6
+    [email] => admin@gmail.com
+    [3] => admin@gmail.com
+    [fullname] => 
+    [4] => 
+    [phone] => 
+    [5] => 
+    [address] => 
+    [6] => 
+    [role] => admin
+    [7] => admin
+    [created_at] => 2024-11-13 00:58:35
+    [8] => 2024-11-13 00:58:35
+)
+
+[13-Nov-2024 05:27:53 Europe/Berlin] Password verify result: true
+[13-Nov-2024 05:27:53 Europe/Berlin] Login successful - User ID: 5, Role: admin
+[13-Nov-2024 05:29:24 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => hiep@gmail.com
+    [password] => admin123
+    [login] => Đăng nhập
+)
+
+[13-Nov-2024 05:29:24 Europe/Berlin] Login attempt - Email: hiep@gmail.com
+[13-Nov-2024 05:29:24 Europe/Berlin] User found: Array
+(
+    [id] => 1
+    [0] => 1
+    [username] => demo
+    [1] => demo
+    [password] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [2] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [email] => hiep@gmail.com
+    [3] => hiep@gmail.com
+    [fullname] => Hiep Tran
+    [4] => Hiep Tran
+    [phone] => 0123456789
+    [5] => 0123456789
+    [address] => HueCity
+    [6] => HueCity
+    [role] => user
+    [7] => user
+    [created_at] => 2024-11-12 12:47:20
+    [8] => 2024-11-12 12:47:20
+)
+
+[13-Nov-2024 05:29:24 Europe/Berlin] Password verify result: true
+[13-Nov-2024 05:29:24 Europe/Berlin] Login successful - User ID: 1, Role: user
+[13-Nov-2024 05:49:00 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => admin@gmail.com
+    [password] => 123
+    [login] => Đăng nhập
+)
+
+[13-Nov-2024 05:49:00 Europe/Berlin] Login attempt - Email: admin@gmail.com
+[13-Nov-2024 05:49:00 Europe/Berlin] User found: Array
+(
+    [id] => 5
+    [0] => 5
+    [username] => admin
+    [1] => admin
+    [password] => $2y$10$HLqIGWGvHWg8YuNVLodi7e963GVYCtJDxzX2cmwnnyB8mhyspwHt6
+    [2] => $2y$10$HLqIGWGvHWg8YuNVLodi7e963GVYCtJDxzX2cmwnnyB8mhyspwHt6
+    [email] => admin@gmail.com
+    [3] => admin@gmail.com
+    [fullname] => 
+    [4] => 
+    [phone] => 
+    [5] => 
+    [address] => 
+    [6] => 
+    [role] => admin
+    [7] => admin
+    [created_at] => 2024-11-13 00:58:35
+    [8] => 2024-11-13 00:58:35
+)
+
+[13-Nov-2024 05:49:00 Europe/Berlin] Password verify result: true
+[13-Nov-2024 05:49:01 Europe/Berlin] Login successful - User ID: 5, Role: admin
+[13-Nov-2024 05:49:58 Europe/Berlin] Login attempt - POST data: Array
+(
+    [email] => hiep@gmail.com
+    [password] => admin123
+    [login] => Đăng nhập
+)
+
+[13-Nov-2024 05:49:58 Europe/Berlin] Login attempt - Email: hiep@gmail.com
+[13-Nov-2024 05:49:58 Europe/Berlin] User found: Array
+(
+    [id] => 1
+    [0] => 1
+    [username] => demo
+    [1] => demo
+    [password] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [2] => $2y$10$TPttnp.JtmsuaY4aQEH/9e/LeMwMwQw8lk5xACMPZssOLCjV/EbEq
+    [email] => hiep@gmail.com
+    [3] => hiep@gmail.com
+    [fullname] => Hiep Tran
+    [4] => Hiep Tran
+    [phone] => 0123456789
+    [5] => 0123456789
+    [address] => HueCity
+    [6] => HueCity
+    [role] => user
+    [7] => user
+    [created_at] => 2024-11-12 12:47:20
+    [8] => 2024-11-12 12:47:20
+)
+
+[13-Nov-2024 05:49:59 Europe/Berlin] Password verify result: true
+[13-Nov-2024 05:49:59 Europe/Berlin] Login successful - User ID: 1, Role: user

@@ -1,4 +1,3 @@
-
 .form-container {
     min-height: calc(100vh - 80px); 
     display: flex;
@@ -142,4 +141,230 @@
         width: 100%;
         font-size: 14px;
     }
-} 
+}
+
+/* User Icon và Dropdown Styles */
+.user-icon {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.user-icon i {
+    font-size: 18px;
+    color: #000000;
+    display: block;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 150%;
+    right: 0;
+    width: 250px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+}
+
+.user-dropdown.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Mũi tên chỉ lên */
+.user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+}
+
+.user-dropdown .user-info {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.user-dropdown .user-info p {
+    margin: 0;
+    color: #333;
+    font-weight: 500;
+}
+
+.user-dropdown hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+.user-dropdown a {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    color: #333 !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.user-dropdown a i {
+    color: #333 !important;
+    width: 20px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.user-dropdown a:hover {
+    background: #f8f9fa;
+    color: #e84393 !important;
+}
+
+.user-dropdown a:hover i {
+    color: #e84393 !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cập nhật style cho icons */
+header .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Style chung cho icons */
+header .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Style cho icons và search icon */
+header .icons a, 
+header .search-icon,
+header .user-icon {
+    color: #ffffff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Style cho các icon bên trong - luôn hiển thị màu trắng */
+header .icons a i,
+header .search-icon i,
+header .user-icon i {
+    color: #ffffff !important;
+    font-size: 18px;
+    display: block;
+    
+}
+
+/* Hiệu ứng hover */
+header .icons a:hover,
+header .search-icon:hover,
+header .user-icon:hover,
+header .icons a:hover i,
+header .search-icon:hover i,
+header .user-icon:hover i {
+    color: #e84393 !important;
+}
+
+/* Loại bỏ gạch chân cho links */
+header .icons a {
+    text-decoration: none;
+}
+
+/* Style cho user icon */
+.user-icon i {
+    font-size: 18px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+/* Style cho search icon */
+.search-icon i {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Style cho heart và cart icons */
+header .icons a i {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+/* Hiệu ứng hover cho tất cả icons */
+header .icons > *:hover i,
+header .icons a:hover i,
+.user-icon:hover i,
+.search-icon:hover i {
+    color: #e84393;
+}
+
+/* Đảm bảo input không bị in hoa */
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="text"],
+.form-container input[type="tel"],
+.form-container textarea {
+    text-transform: none !important;
+    font-size: 16px;
+}
+
+/* Đảm bảo placeholder cũng không bị in hoa */
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    text-transform: none !important;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.add-to-cart {
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    color: #ff4444;
+}
+
+/* Hiệu ứng pulse khi thêm vào giỏ hàng */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 0.5s ease-in-out;
+}

@@ -1,10 +1,15 @@
+<?php
+session_start();
+error_log("Current session: " . print_r($_SESSION, true));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Nước Hoa</title>
-    
+    <?php include 'includes/head.php'; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -14,6 +19,7 @@
     <?php 
     include 'includes/header.php';
     include 'config/db.php';
+    require_once 'includes/functions.php';
     
     try {
        
@@ -80,9 +86,15 @@
                                 Chi tiết
                             </button>
                             <?php if($product['stock'] > 0): ?>
-                                <button class="add-to-cart">
-                                    <i class="fas fa-cart-plus"></i>
-                                </button>
+                                <?php if(isset($_SESSION['user_id'])): ?>
+                                    <button type="button" class="add-to-cart" data-product-id="<?php echo $product['id']; ?>">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                <?php else: ?>
+                                    <button type="button" class="add-to-cart" onclick="window.location.href='login.php'">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -130,9 +142,15 @@
                                 <input type="number" id="quantity" value="1" min="1">
                                 <button onclick="increaseQuantity()">+</button>
                             </div>
-                            <button class="add-to-cart-btn" onclick="addToCart()">
-                                Thêm vào giỏ hàng
-                            </button>
+                            <?php if(isset($_SESSION['user_id'])): ?>
+                                <button class="add-to-cart-btn" data-product-id="" id="modalAddToCartBtn">
+                                    Thêm vào giỏ hàng
+                                </button>
+                            <?php else: ?>
+                                <button class="add-to-cart-btn" onclick="window.location.href='login.php'">
+                                    Đăng nhập để mua hàng
+                                </button>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -175,6 +193,8 @@
             product.description || 'Chưa có mô tả cho sản phẩm này';
 
         
+        document.getElementById('modalAddToCartBtn').setAttribute('data-product-id', product.id);
+        
         new bootstrap.Modal(document.getElementById('productModal')).show();
     }
 
@@ -198,6 +218,50 @@
       
         bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
     }
+
+    $(document).ready(function() {
+        // Debug click event
+        $('.add-to-cart-btn, .add-to-cart').click(function(e) {
+            e.preventDefault();
+            console.log('Button clicked');
+            const productId = $(this).data('product-id');
+            const quantity = $('#quantity').val() || 1;
+            console.log('Product ID:', productId);
+            console.log('Quantity:', quantity);
+            
+            $.ajax({
+                url: 'includes/add_to_cart.php',
+                method: 'POST',
+                data: { 
+                    product_id: productId,
+                    quantity: quantity 
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Success response:', response);
+                    if (response.success) {
+                        alert(response.message);
+                        if(response.cartCount) {
+                            $('.cart-count').text(response.cartCount);
+                        }
+                    } else {
+                        if (response.message.includes('đăng nhập')) {
+                            if (confirm('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng. Đến trang đăng nhập?')) {
+                                window.location.href = 'login.php';
+                            }
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error:', error);
+                    console.log('Response:', xhr.responseText);
+                    alert('Có lỗi xảy ra khi thêm vào giỏ hàng');
+                }
+            });
+        });
+    });
     </script>
 
    
@@ -285,5 +349,7 @@
     
     include 'includes/footer.php'; 
     ?>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html> 
